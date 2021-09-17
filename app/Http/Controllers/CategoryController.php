@@ -16,4 +16,10 @@ class CategoryController extends Controller
         $category = $this->categoryRepository->getDataCategory();
         return $category;
     }
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+    public function show($id)
+    {
+        $category = $this->categoryRepository->findDataCategory($id);
+        return $category;
+    }
 }

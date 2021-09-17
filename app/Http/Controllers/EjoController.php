@@ -12,9 +12,16 @@ class EjoController extends Controller
     {
         $this->ejoRepository = $ejoRepository;
     }
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     public function index()
     {
         $ejo = $this->ejoRepository->getDataEjo();
+        return $ejo;
+    }
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+    public function show($id)
+    {
+        $ejo = $this->ejoRepository->findDataEjo($id);
         return $ejo;
     }
 }

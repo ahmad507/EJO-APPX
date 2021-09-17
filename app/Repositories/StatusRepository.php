@@ -13,6 +13,7 @@ class StatusRepository
             'status' => $status->status_name
         ];
     }
+    /**++++++++++++++++++++++++++++++++++++ */
     public function getDataStatus()
     {
         $status = Status::orderBy('id', 'asc')
@@ -21,5 +22,12 @@ class StatusRepository
                 return $this->formatData($status);
             });
         return $status;
+    }
+    /**++++++++++++++++++++++++++++++++++++ */
+    public function findDataStatus($id)
+    {
+        $status = Status::where('id', $id)
+            ->firstOrFail();
+        return $this->formatData($status);
     }
 }

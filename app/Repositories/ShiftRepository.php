@@ -24,4 +24,11 @@ class ShiftRepository
             });
         return $shift;
     }
+    /**++++++++++++++++++++++++++++++++++++ */
+    public function findDataShift($id)
+    {
+        $shift = Shift::where('id', $id)
+            ->firstOrFail();
+        return $this->formatData($shift);
+    }
 }

@@ -17,4 +17,10 @@ class GroupController extends Controller
         $group = $this->groupRepository->getDataGroup();
         return $group;
     }
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+    public function show($id)
+    {
+        $group = $this->groupRepository->findDataGroup($id);
+        return $group;
+    }
 }

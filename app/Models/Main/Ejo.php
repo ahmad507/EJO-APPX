@@ -12,18 +12,18 @@ class Ejo extends Model
 
     public function shift()
     {
-        return $this->belongsTo(Shift::class)->orderBy('id', 'desc')->pluck('shift_name');
+        return $this->belongsTo(Shift::class);
     }
     public function group()
     {
-        return $this->belongsTo(Group::class)->orderBy('id', 'desc')->pluck('group_name');
+        return $this->belongsTo(Group::class);
     }
     public function category()
     {
-        return $this->belongsTo(Category::class)->orderBy('id', 'desc')->pluck('category_name');
+        return $this->belongsTo(Category::class);
     }
     public function status()
     {
-        return $this->belongsTo(Status::class)->orderBy('id', 'desc')->pluck('status_name');
+        return $this->belongsTo(Status::class);
     }
 }

@@ -17,4 +17,10 @@ class StatusController extends Controller
         $status = $this->statusRepository->getDataStatus();
         return $status;
     }
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+    public function show($id)
+    {
+        $status = $this->statusRepository->findDataStatus($id);
+        return $status;
+    }
 }

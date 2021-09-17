@@ -25,4 +25,12 @@ class CategoryRepository
             });
         return $category;
     }
+
+    /**++++++++++++++++++++++++++++++++ */
+    public function findDataCategory($id)
+    {
+        $category = Category::where('id', $id)
+            ->firstOrFail();
+        return $this->formatData($category);
+    }
 }

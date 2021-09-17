@@ -24,4 +24,11 @@ class GroupRepository
             });
         return $group;
     }
+    /**++++++++++++++++++++++++++++++++++++++++++ */
+    public function findDataGroup($id)
+    {
+        $group = Group::where('id', $id)
+            ->firstOrfail();
+        return $this->formatData($group);
+    }
 }
