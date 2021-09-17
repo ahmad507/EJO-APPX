@@ -21,6 +21,7 @@ class CreateEjoTable extends Migration
             $table->string('shift_id');
             $table->string('group_id');
             $table->string('category_id');
+            $table->string('status_id')->default(1);
             $table->string('ejo_flag')->default(1);
             $table->timestamps();
         });

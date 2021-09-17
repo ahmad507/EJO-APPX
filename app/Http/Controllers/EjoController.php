@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repositories\EjoRepository;
+
 
 class EjoController extends Controller
 {
+    protected $ejoRepository;
+    public function __construct(EjoRepository $ejoRepository)
+    {
+        $this->ejoRepository = $ejoRepository;
+    }
     public function index()
     {
-        return view('main.ejo.index');
+        $ejo = $this->ejoRepository->getDataEjo();
+        return $ejo;
     }
 }

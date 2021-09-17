@@ -9,4 +9,10 @@ class Shift extends Model
 {
     public $table = 'shift';
     use HasFactory;
+
+
+    public function ejo()
+    {
+        return $this->hasMany(Ejo::class, 'id')->select('id', 'shift_id');
+    }
 }

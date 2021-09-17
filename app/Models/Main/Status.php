@@ -5,13 +5,12 @@ namespace App\Models\Main;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Status extends Model
 {
-    public $table = 'categories';
+    public $table = 'status';
     use HasFactory;
-
     public function ejo()
     {
-        return $this->hasMany(Ejo::class, 'id')->select('id', 'category_id');
+        return $this->hasMany(Ejo::class, 'id')->select('id', 'status_id');
     }
 }

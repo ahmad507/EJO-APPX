@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EjoController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,10 @@ Route::prefix('group')->group(function () {
 
 Route::prefix('category')->group(function () {
     Route::get('/category_index', [CategoryController::class, 'index']);
+});
+
+Route::prefix('status')->group(function () {
+    Route::get('/status_index', [StatusController::class, 'index']);
 });
 
 Route::prefix('ejo')->group(function () {
