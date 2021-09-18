@@ -10,6 +10,7 @@ class Shift extends Model
     public $table = 'shift';
     use HasFactory;
 
+    protected $fillable = ['shift_name'];
 
     public function ejo()
     {

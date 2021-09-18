@@ -24,13 +24,23 @@ Route::get('/', function () {
 
 
 Route::prefix('shift')->group(function () {
-    Route::get('/shift_index', [ShiftController::class, 'index']);
-    Route::get('/shift_data/{id}', [ShiftController::class, 'show']);
+    Route::get('/shift_index', [ShiftController::class, 'index'])->name('shift.index');
+    Route::get('/shift_data/{id}', [ShiftController::class, 'show'])->name('shift.show');
+    Route::get('/shift_edit/{id}', [ShiftController::class, 'edit'])->name('shift.edit');
+    Route::post('/shift_update{id}', [ShiftController::class, 'update'])->name('shift.update');
+    Route::get('/shift_create', [ShiftController::class, 'create'])->name('shift.create');
+    Route::post('/shift_store', [ShiftController::class, 'store'])->name('shift.store');
+    Route::get('/shift_delete{id}', [ShiftController::class, 'destroy'])->name('shift.destroy');
 });
 
 Route::prefix('group')->group(function () {
-    Route::get('/group_index', [GroupController::class, 'index']);
-    Route::get('/group_data/{id}', [GroupController::class, 'show']);
+    Route::get('/group_index', [GroupController::class, 'index'])->name('group.index');
+    Route::get('/group_data/{id}', [GroupController::class, 'show'])->name('group.show');
+    Route::get('/group_edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
+    Route::post('/group_update{id}', [GroupController::class, 'update'])->name('group.update');
+    Route::get('/group_create', [GroupController::class, 'create'])->name('group.create');
+    Route::post('/group_store', [GroupController::class, 'store'])->name('group.store');
+    Route::get('/group_delete{id}', [GroupController::class, 'destroy'])->name('group.destroy');
 });
 
 Route::prefix('category')->group(function () {

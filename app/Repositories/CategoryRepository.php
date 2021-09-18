@@ -13,7 +13,7 @@ class CategoryRepository
     {
         return [
             'id' => $category->id,
-            'category' => $category->category_name
+            'category' => $category->category_name,
         ];
     }
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

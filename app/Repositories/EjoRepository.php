@@ -17,7 +17,7 @@ class EjoRepository
             'problem' => $ejo->ejo_description,
             'shift' => $ejo->shift->shift_name,
             'group' => $ejo->group->group_name,
-            'category' => $ejo->category->category_name,
+            'category' => $ejo->category,
             'status' => $ejo->status->status_name,
         ];
     }
