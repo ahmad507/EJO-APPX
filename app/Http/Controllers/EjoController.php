@@ -16,7 +16,7 @@ class EjoController extends Controller
     public function index()
     {
         $ejo = $this->ejoRepository->getDataEjo();
-        return $ejo;
+        return view('main.ejo.index', compact('ejo'));
     }
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     public function show($id)

@@ -34,8 +34,13 @@ Route::prefix('group')->group(function () {
 });
 
 Route::prefix('category')->group(function () {
-    Route::get('/category_index', [CategoryController::class, 'index']);
-    Route::get('/category_data/{id}', [CategoryController::class, 'show']);
+    Route::get('/category_index', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category_data/{id}', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('/category_edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category_update{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category_create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category_store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category_delete{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
 Route::prefix('status')->group(function () {

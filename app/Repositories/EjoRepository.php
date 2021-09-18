@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
 
+use App\Models\Main\Ejo;
 
 class EjoRepository
 {
@@ -15,42 +15,33 @@ class EjoRepository
             'number' => $ejo->ejo_number,
             'machine' => $ejo->ejo_machine,
             'problem' => $ejo->ejo_description,
-            'shift' => $ejo->shift_name,
-            'group' => $ejo->group_name,
-            'category' => $ejo->category_name,
-            'status' => $ejo->status_name,
+            'shift' => $ejo->shift->shift_name,
+            'group' => $ejo->group->group_name,
+            'category' => $ejo->category->category_name,
+            'status' => $ejo->status->status_name,
         ];
     }
 
     /**++++++++++++++++++++++++++++++++++++ */
     public function getDataEjo()
     {
-        $ejo = DB::table('ejo')
-            ->leftJoin('shift', 'ejo.shift_id', '=', 'shift.id')
-            ->leftJoin('group', 'ejo.group_id', '=', 'group.id')
-            ->leftJoin('categories', 'ejo.category_id', '=', 'categories.id')
-            ->leftJoin('status', 'ejo.status_id', '=', 'status.id')
-            ->select('ejo.*', 'shift.shift_name', 'group.group_name', 'categories.category_name', 'status.status_name')
+        $ejo = Ejo::orderBy('id', 'asc')
+            ->with('shift')
+            ->with('group')
+            ->with('category')
+            ->with('status')
             ->get()
             ->map(function ($ejo) {
                 return $this->formatData($ejo);
             });
-        return $ejo;
+        $newejo = json_decode($ejo);
+        return $newejo;
     }
     /**++++++++++++++++++++++++++++++++++++ */
     public function findDataEjo($ejo_number)
     {
-        $ejo = DB::table('ejo')
-            ->where('ejo_number', $ejo_number)
-            ->leftJoin('shift', 'ejo.shift_id', '=', 'shift.id')
-            ->leftJoin('group', 'ejo.group_id', '=', 'group.id')
-            ->leftJoin('categories', 'ejo.category_id', '=', 'categories.id')
-            ->leftJoin('status', 'ejo.status_id', '=', 'status.id')
-            ->select('ejo.*', 'shift.shift_name', 'group.group_name', 'categories.category_name', 'status.status_name')
-            ->get()
-            ->map(function ($ejo) {
-                return $this->formatData($ejo);
-            });
-        return $ejo;
+        $ejo = Ejo::where('ejo_number', $ejo_number)
+            ->firstOrFail();
+        return $this->formatData($ejo);
     }
 }

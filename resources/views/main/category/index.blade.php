@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Category</title>
-</head>
-
-<body>
+@extends('layouts.master')
+@section('content')
     <h1>Categori Page</h1>
-</body>
-
-</html>
+    <hr>
+    <a href="/category/category_create">Create</a>
+    <ul>
+        @foreach ($category as $items)
+            <li> {{ $items->category }}</li>
+            <a href="{{ url('/category/category_edit', $items->id) }}" class="btn btn-outline-success btn-xs">edit</i>
+            </a>
+            <form method="DELETE" enctype="multipart/form-data" action="{{ route('category.destroy', $items->id) }}">
+                @csrf
+                <button type="submit" class="btn btn-danger">delete</button>
+            </form>
+        @endforeach
+    </ul>
+@endsection

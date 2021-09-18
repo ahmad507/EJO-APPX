@@ -10,6 +10,8 @@ class Category extends Model
     public $table = 'categories';
     use HasFactory;
 
+    protected $fillable = ['category_name'];
+
     public function ejo()
     {
         return $this->hasMany(Ejo::class, 'id')->select('id', 'category_id');
