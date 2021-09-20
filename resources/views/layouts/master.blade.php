@@ -24,8 +24,8 @@
 </head>
 
 <body class="font-SourceSans">
-
     <main class="h-screen w-screen">
+        <x-header-component></x-header-component>
         @yield('content')
     </main>
 

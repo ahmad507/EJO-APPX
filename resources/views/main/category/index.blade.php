@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-    <h1>Categori Page</h1>
     <hr>
     <a href="/category/category_create">Create</a>
     <ul>
