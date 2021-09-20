@@ -59,6 +59,11 @@ Route::prefix('status')->group(function () {
 });
 
 Route::prefix('ejo')->group(function () {
-    Route::get('/ejo_index', [EjoController::class, 'index']);
-    Route::get('/ejo_data/{ejo_number}', [EjoController::class, 'show']);
+    Route::get('/ejo_index', [EjoController::class, 'index'])->name('ejo.index');
+    Route::get('/ejo_data/{ejo_number}', [EjoController::class, 'show'])->name('ejo.show');
+    Route::get('/ejo_edit/{id}', [EjoController::class, 'edit'])->name('ejo.edit');
+    Route::post('/ejo_update{id}', [EjoController::class, 'update'])->name('ejo.update');
+    Route::get('/ejo_create', [EjoController::class, 'create'])->name('ejo.create');
+    Route::post('/ejo_store', [EjoController::class, 'store'])->name('ejo.store');
+    Route::get('/ejo_delete{id}', [EjoController::class, 'destroy'])->name('ejo.destroy');
 });
