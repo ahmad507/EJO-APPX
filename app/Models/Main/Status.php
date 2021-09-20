@@ -9,6 +9,7 @@ class Status extends Model
 {
     public $table = 'status';
     use HasFactory;
+    protected $fillable = ['status_name'];
     public function ejo()
     {
         return $this->hasMany(Ejo::class, 'id')->select('id', 'status_id');

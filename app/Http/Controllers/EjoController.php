@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEjoRequest;
+use App\Repositories\CategoryRepository;
 use App\Repositories\EjoRepository;
-
+use App\Repositories\GroupRepository;
+use App\Repositories\ShiftRepository;
 
 class EjoController extends Controller
 {
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     protected $ejoRepository;
-    public function __construct(EjoRepository $ejoRepository)
-    {
+    public function __construct(
+        EjoRepository $ejoRepository,
+        ShiftRepository $shiftRepository,
+        GroupRepository $groupRepository,
+        CategoryRepository $categoryRepository
+    ) {
         $this->ejoRepository = $ejoRepository;
+        $this->shiftRepository = $shiftRepository;
+        $this->groupRepository = $groupRepository;
+        $this->categoryRepository = $categoryRepository;
     }
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     public function index()
@@ -29,7 +38,10 @@ class EjoController extends Controller
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     public function create()
     {
-        return view('main.ejo.create');
+        $shift = $this->shiftRepository->getDataShift();
+        $group = $this->groupRepository->getDataGroup();
+        $category = $this->categoryRepository->getDataCategory();
+        return view('main.ejo.create', compact('shift', 'group', 'category'));
     }
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     public function store(StoreEjoRequest $ejo)

@@ -54,8 +54,13 @@ Route::prefix('category')->group(function () {
 });
 
 Route::prefix('status')->group(function () {
-    Route::get('/status_index', [StatusController::class, 'index']);
-    Route::get('/status_data/{id}', [StatusController::class, 'show']);
+    Route::get('/status_index', [StatusController::class, 'index'])->name('status.index');
+    Route::get('/status_data/{id}', [StatusController::class, 'show'])->name('status.show');
+    Route::get('/status_edit/{id}', [StatusController::class, 'edit'])->name('status.edit');
+    Route::post('/status_update{id}', [StatusController::class, 'update'])->name('status.update');
+    Route::get('/status_create', [StatusController::class, 'create'])->name('status.create');
+    Route::post('/status_store', [StatusController::class, 'store'])->name('status.store');
+    Route::get('/status_delete{id}', [StatusController::class, 'destroy'])->name('status.destroy');
 });
 
 Route::prefix('ejo')->group(function () {
