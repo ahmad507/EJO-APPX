@@ -1,5 +1,7 @@
 <header>
-    <div class="flex flex-wrap justify-between h-10 bg-teal_primary">
-        <p class="my-2 text-white mx-auto"><strong>EJO</strong> | Management System</p>
-    </div>
+    <nav class=" flex h-10 bg-teal_primary">
+        <div class="container  my-2 text-white flex justify-center item-center">
+            <p><strong>EJO</strong> | Management System</p>
+        </div>
+    </nav>
 </header>

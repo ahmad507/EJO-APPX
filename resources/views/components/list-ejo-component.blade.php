@@ -1,82 +1,68 @@
-<div>
-    <ul>
-        @foreach ($dataejo as $items)
-            <li class="flex justify-around bg-white mx-2 my-2 h-12" id="{{ $items->status }}">
-                <div class="container flex items-center space-x-3">
-                    <div class="avatar">
-                        <div class="w-12 h-12 mask mask-circle">
-                            <img src="{{ asset('/images/machine.png') }}" alt="__logo" class="h-12 md:h-24">
-                        </div>
+<ul>
+    @foreach ($dataejo as $items)
+        <li class="flex flex-col md:flex-row justify-evenly w-full py-2" id="{{ $items->status }}">
+            <div class=" container mx-0 mt-0 md:mt-1 md:mx-4">
+                <div class="font-semibold">
+                    EJO NUMBER : {{ $items->number }}
+                </div>
+                <div class="text-sm">
+                    Machine: {{ $items->machine }}
+                </div>
+            </div>
+            <div class="container mx-0 mt-0 md:mt-1 md:mx-4">
+                <div>
+                    <div class="font-semibold">
+                        {{ $items->problem }}
                     </div>
-                    <div>
-                        <div class="font-bold">
-                            EJO NUM: {{ $items->number }}
-                        </div>
-                        <div class="text-sm">
-                            Machine: {{ $items->machine }}
-                        </div>
+                    <span class="badge badge-outline badge-md capitalize"
+                        id="{{ $items->category }}">{{ $items->category }}</span>
+                </div>
+            </div>
+            <div class="container flex justify-start items-center mx-0 mt-0 md:mt-1 md:mx-4">
+                <div class="badge badge-outline badge-md capitalize">
+                    {{ $items->status }}
+                </div>
+            </div>
+            <div class="container flex justify-end items-center mx-0 mt-0 md:mt-1 md:mx-4">
+                <div>
+                    <div class="btn  btn-circle btn-sm btn-ghost">
+                        <a class="lowercase" href="{{ url('/ejo/ejo_edit', $items->id) }}"
+                            style="text-decoration: none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M14.078 4.232l-12.64 12.639-1.438 7.129 7.127-1.438 12.641-12.64-5.69-5.69zm-10.369 14.893l-.85-.85 11.141-11.125.849.849-11.14 11.126zm2.008 2.008l-.85-.85 11.141-11.125.85.85-11.141 11.125zm18.283-15.444l-2.816 2.818-5.691-5.691 2.816-2.816 5.691 5.689z" />
+                            </svg></a>
                     </div>
                 </div>
-                <div class="container flex items-center space-x-3">
-                    <div>
-                        <div class="font-bold">
-                            {{ $items->problem }}
-                        </div>
-                        <span class="badge badge-outline badge-md uppercase"
-                            id="{{ $items->category }}">{{ $items->category }}</span>
-                    </div>
-                </div>
-                <div class="container flex items-center space-x-3">
-                    <div>
-                        <div class="font-bold">
-                            GROUP : {{ $items->group }}
-                        </div>
-                        <span class="badge badge-outline badge-sm">Shift: {{ $items->shift }}</span>
-                    </div>
-                </div>
-                <div class="container flex items-center justify-end space-x-3">
-                    <div>
-                        <div class="font-bold badge badge-outline badge-lg capitalize">
-                            {{ $items->status }}
-                        </div>
-                    </div>
-                </div>
-                <div class="container flex items-center justify-end space-x-3">
-                    <div>
-                        <div class="btn btn-square btn-sm btn-accent">
-                            <a href="{{ url('/ejo/ejo_edit', $items->id) }}" style="text-decoration: none">edit</a>
-                        </div>
-                    </div>
-                    <form method="DELETE" enctype="multipart/form-data"
-                        action="{{ route('ejo.destroy', $items->id) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-circle btn-sm btn-warning ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                class="inline-block w-6 h-6 stroke-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </li>
-            <hr>
-        @endforeach
-    </ul>
-</div>
+                <form method="DELETE" enctype="multipart/form-data" action="{{ route('ejo.destroy', $items->id) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-circle btn-sm btn-ghost ml-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M16 9v4.501c-.748.313-1.424.765-2 1.319v-5.82c0-.552.447-1 1-1s1 .448 1 1zm-4 0v10c0 .552-.447 1-1 1s-1-.448-1-1v-10c0-.552.447-1 1-1s1 .448 1 1zm1.82 15h-11.82v-18h2v16h8.502c.312.749.765 1.424 1.318 2zm-6.82-16c.553 0 1 .448 1 1v10c0 .552-.447 1-1 1s-1-.448-1-1v-10c0-.552.447-1 1-1zm14-4h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711v2zm-1 2v7.182c-.482-.115-.983-.182-1.5-.182l-.5.025v-7.025h2zm3 13.5c0 2.485-2.017 4.5-4.5 4.5s-4.5-2.015-4.5-4.5 2.017-4.5 4.5-4.5 4.5 2.015 4.5 4.5zm-3.086-2.122l-1.414 1.414-1.414-1.414-.707.708 1.414 1.414-1.414 1.414.707.708 1.414-1.414 1.414 1.414.708-.708-1.414-1.414 1.414-1.414-.708-.708z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </li>
+        <hr>
+    @endforeach
+</ul>
 
 <style>
     #new {
         border-left: 3px solid #ff0000;
-
+        border-right: 3px solid #ff0000;
     }
 
     #process {
         border-left: 3px solid #e5ff00;
+        border-right: 3px solid #e5ff00;
     }
 
     #done {
         border-left: 3px solid #15ff00;
+        border-right: 3px solid #15ff00;
     }
 
     #electrics {

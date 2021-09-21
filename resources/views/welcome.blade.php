@@ -7,7 +7,7 @@
         <div class="flex flex-col -mt-12  h-8 md:justify-center md:mt-12 ">
             <p class="my-2 text-teal_primary text-xl mx-auto">Welcome to <strong>EJO</strong></p>
             <a href="{{ route('ejo.index') }}"
-                class="btn btn-outline btn-accent my-2  text-xl mx-auto w-32 md:w-44 lowercase">Get Started</a>
+                class="btn btn-outline btn-accent my-2  text-xl mx-auto w-44 md:w-32 lowercase">Get Started</a>
         </div>
     </div>
 @endsection
